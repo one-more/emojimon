@@ -1,10 +1,10 @@
 import { mudConfig } from "@latticexyz/world/register";
 
 export default mudConfig({
+  enums: {
+    // TODO
+  },
   tables: {
-    Counter: {
-      keySchema: {},
-      valueSchema: "uint32",
-    },
+    // TODO
   },
 });

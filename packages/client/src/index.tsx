@@ -14,26 +14,30 @@ const root = ReactDOM.createRoot(rootElement);
 
 // TODO: figure out if we actually want this to be async or if we should render something else in the meantime
 setup().then(async (result) => {
-  root.render(
-    <MUDProvider value={result}>
-      <App />
-      <ToastContainer position="bottom-right" draggable={false} theme="dark" />
-    </MUDProvider>
-  );
+    root.render(
+        <MUDProvider value={result}>
+            <App />
+            <ToastContainer
+                position="bottom-right"
+                draggable={false}
+                theme="dark"
+            />
+        </MUDProvider>
+    );
 
-  // https://vitejs.dev/guide/env-and-mode.html
-  if (import.meta.env.DEV) {
-    const { mount: mountDevTools } = await import("@latticexyz/dev-tools");
-    mountDevTools({
-      config: mudConfig,
-      publicClient: result.network.publicClient,
-      walletClient: result.network.walletClient,
-      latestBlock$: result.network.latestBlock$,
-      storedBlockLogs$: result.network.storedBlockLogs$,
-      worldAddress: result.network.worldContract.address,
-      worldAbi: result.network.worldContract.abi,
-      write$: result.network.write$,
-      recsWorld: result.network.world,
-    });
-  }
+    // https://vitejs.dev/guide/env-and-mode.html
+    if (import.meta.env.DEV) {
+        const { mount: mountDevTools } = await import("@latticexyz/dev-tools");
+        mountDevTools({
+            config: mudConfig,
+            publicClient: result.network.publicClient,
+            walletClient: result.network.walletClient,
+            latestBlock$: result.network.latestBlock$,
+            storedBlockLogs$: result.network.storedBlockLogs$,
+            worldAddress: result.network.worldContract.address,
+            worldAbi: result.network.worldContract.abi,
+            write$: result.network.write$,
+            recsWorld: result.network.world,
+        });
+    }
 });

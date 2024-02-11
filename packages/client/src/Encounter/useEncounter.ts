@@ -8,9 +8,7 @@ import { ToastOptions } from "react-toastify/dist/types";
 export function useHandleEncounter({ monsterName }: { monsterName: string }) {
     const {
         systemCalls: { throwBall, fleeEncounter },
-        components: {
-            MonsterCatchAttempt
-        },
+        components: { MonsterCatchAttempt },
         network: { playerEntity },
     } = useMUD();
 
@@ -45,7 +43,7 @@ export function useHandleEncounter({ monsterName }: { monsterName: string }) {
                 closeButton: true,
             } as ToastOptions);
         }
-    }, [catchAttempt, monsterName])
+    }, [catchAttempt, monsterName]);
 
     return {
         throwBall: useCallback(async () => {
@@ -63,6 +61,6 @@ export function useHandleEncounter({ monsterName }: { monsterName: string }) {
                 autoClose: 5000,
                 closeButton: true,
             } as ToastOptions);
-        }, [fleeEncounter])
-    }
+        }, [fleeEncounter]),
+    };
 }

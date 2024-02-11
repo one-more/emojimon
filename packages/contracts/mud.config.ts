@@ -13,7 +13,7 @@ export default mudConfig({
         exists: "bool",
         monster: "bytes32",
         catchAttempts: "uint256",
-      }
+      },
     },
     EncounterTrigger: "bool",
     Encounterable: "bool",
@@ -32,7 +32,7 @@ export default mudConfig({
       keySchema: { player: "bytes32" },
       valueSchema: {
         result: "MonsterCatchResult",
-      }
+      },
     },
     Monster: "MonsterType",
     Movable: "bool",
@@ -44,7 +44,7 @@ export default mudConfig({
       valueSchema: {
         x: "uint32",
         y: "uint32",
-      }
-    }
+      },
+    },
   },
 });

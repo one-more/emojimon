@@ -1,5 +1,5 @@
 export enum MonsterCatchResult {
-  Missed,
-  Caught,
-  Fled,
+    Missed,
+    Caught,
+    Fled,
 }

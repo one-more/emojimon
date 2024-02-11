@@ -27,7 +27,6 @@ export default mudConfig({
       },
     },
     MonsterCatchAttempt: {
-      ephemeral: true,
       dataStruct: false,
       keySchema: { player: "bytes32" },
       valueSchema: {

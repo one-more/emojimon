@@ -1,3 +1,4 @@
 node_modules
 .idea
 packages/contracts/src/codegen
+packages/contracts/deploys

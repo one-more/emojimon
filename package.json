@@ -27,5 +27,10 @@
     "engines": {
         "node": "18.x",
         "pnpm": "8.x"
+    },
+    "pnpm": {
+        "overrides": {
+            "viem": "1.14.0"
+        }
     }
 }

@@ -2,8 +2,6 @@ import { Has, HasValue, getComponentValue, runQuery } from "@latticexyz/recs";
 import { ClientComponents } from "./createClientComponents";
 import { SetupNetworkResult } from "./setupNetwork";
 
-export type SystemCalls = ReturnType<typeof createSystemCalls>;
-
 export function createSystemCalls(
     { playerEntity, worldContract, waitForTransaction }: SetupNetworkResult,
     { Player, Position, Obstruction, Encounter }: ClientComponents
@@ -72,12 +70,12 @@ export function createSystemCalls(
             throw new Error("no encounter");
         }
 
-        const tx = await worldContract.write.throwBall([]);
+        const tx = await worldContract.write.throwBall();
         await waitForTransaction(tx);
     };
 
     const fleeEncounter = async () => {
-        const tx = await worldContract.write.flee([]);
+        const tx = await worldContract.write.flee();
         await waitForTransaction(tx);
     };
 

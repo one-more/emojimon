@@ -41,7 +41,11 @@ export const GameBoard = () => {
         );
     }
 
-    const { width, height, terrain: terrainData } = mapConfig;
+    const { width, height, terrain: terrainData } = mapConfig as {
+        width: number,
+        height: number,
+        terrain: string
+    };
     const terrain = Array.from(hexToArray(terrainData)).map((value, index) => {
         const { emoji } =
             value in TerrainType
@@ -60,7 +64,7 @@ export const GameBoard = () => {
         (encounter ? (encounter.monster as Entity) : undefined) as Entity
     )?.value;
     const monster =
-        monsterType !== null && monsterType in MonsterType
+        monsterType !== null && monsterType && monsterType in MonsterType
             ? monsterTypes[monsterType as MonsterType]
             : null;
     const [monsterName, setMonsterName] = useState("MissingNo");

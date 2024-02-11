@@ -11,7 +11,7 @@ import {
     createWalletClient,
     Hex,
     parseEther,
-    ClientConfig,
+    ClientConfig, Chain, Transport,
 } from "viem";
 import { createFaucetService } from "@latticexyz/services/faucet";
 import { encodeEntity, syncToRecs } from "@latticexyz/store-sync/recs";
@@ -48,8 +48,8 @@ export async function setupNetwork() {
      * (https://viem.sh/docs/clients/public.html)
      */
     const clientOptions = {
-        chain: networkConfig.chain,
-        transport: transportObserver(fallback([webSocket(), http()])),
+        chain: networkConfig.chain as Chain,
+        transport: transportObserver(fallback([webSocket(), http()]) as Transport),
         pollingInterval: 1000,
     } as const satisfies ClientConfig;
 
@@ -127,7 +127,7 @@ export async function setupNetwork() {
         setInterval(requestDrip, 20000);
     }
 
-    const safeWaitForTransaction = async (hash) => {
+    const safeWaitForTransaction = async (hash: `0x${string}`) => {
         return await publicClient.waitForTransactionReceipt({ hash });
     };
 

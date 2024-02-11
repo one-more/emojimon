@@ -110,6 +110,12 @@ export async function setupNetwork() {
     setInterval(requestDrip, 20000);
   }
 
+  const safeWaitForTransaction = async (hash) => {
+    return await publicClient.waitForTransactionReceipt(
+        { hash }
+    )
+  }
+
   return {
     world,
     components,
@@ -118,7 +124,7 @@ export async function setupNetwork() {
     walletClient: burnerWalletClient,
     latestBlock$,
     storedBlockLogs$,
-    waitForTransaction,
+    waitForTransaction: safeWaitForTransaction,
     worldContract,
     write$: write$.asObservable().pipe(share()),
   };
